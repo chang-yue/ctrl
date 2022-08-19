@@ -1,0 +1,57 @@
+
+cifar10_train.py
+
+cifar10_mask.py
+
+cifar10_evaluate.py
+
+models
+
+datasets/datasets/cifar10/cifar10
+    train/
+    test/
+
+cifar10_noisy_labels
+    cifar10_noisy_labels__frac_zero_noise_rates__0_{sparsity}__noise_amount__0_{noise}
+        seed_{seed}
+            cifar10_noisy_labels__frac_zero_noise_rates__0.{sparsity}__noise_amount__0.{noise}.json
+            cifar10_noise_matrix__frac_zero_noise_rates__0.{sparsity}__noise_amount__0.{noise}.pickle
+
+cifar10_training
+    cifar10_noisy_labels__frac_zero_noise_rates__0_{sparsity}__noise_amount__0_{noise}
+        seed_{seed}
+            out_{arch}(__fold_{cv}).log
+            time_{arch}(__fold_{cv}).npy
+            (if save chkpt) model_{arch}(__fold_{cv})_best.pth.tar
+            (if save chkpt) model_{arch}(__fold_{cv})__checkpoint.pth.tar
+            (if cvn) model_{arch}__fold_{cv}__probs.npy
+
+cifar10_training_loss / cifar10_training_proba
+    cifar10_noisy_labels__frac_zero_noise_rates__0_{sparsity}__noise_amount__0_{noise}
+        seed_{seed}
+            model_{arch}_{train/test}_loss(__cvn_{cvn}__fold_{cv}).npy
+
+cifar10_mask
+    cifar10_noisy_labels__frac_zero_noise_rates__0_{sparsity}__noise_amount__0_{noise}
+        seed_{seed}
+            {method}
+                model_{arch}_train_mask.npy
+                (if model pred label) cifar10_noisy_labels.json
+
+cifar10_mask_cl
+    cifar10_noisy_labels__frac_zero_noise_rates__0_{sparsity}__noise_amount__0_{noise}
+        seed_{seed}
+            cifar10__train__model_{arch}__pyx.npy
+            {cl_method}
+                model_{arch}_train_mask.npy
+
+cifar10_training_masked
+    cifar10_noisy_labels__frac_zero_noise_rates__0_{sparsity}__noise_amount__0_{noise}
+        seed_{seed}
+            {method}
+                out_{arch}(__fold_{cv}).log
+                time_{arch}(__fold_{cv}).npy
+                (if save chkpt) model_{arch}__masked(__fold_{cv})_best.pth.tar
+                (if save chkpt) model_{arch}__masked(__fold_{cv})__checkpoint.pth.tar
+                (if cvn) model_{arch}__fold_{cv}__probs.npy
+

@@ -1,0 +1,36 @@
+
+neural_net.py
+
+utils.py
+
+test.py
+
+datasets
+    {dataset}
+        seed_{seed}
+            data
+                train.csv
+                test.csv
+                y_train_clean.npy
+                categorical_features.txt
+                continuous_features.txt
+
+training
+    {dataset}
+        seed_{seed}
+            (if cl) psx.npy
+            (if ctrl) model.pth.tar
+            (if ctrl) train_loss.npy
+
+mask
+    {dataset}
+        seed_{seed}
+            {method}
+                train_mask.npy
+
+retrained_model
+    {dataset}
+        seed_{seed}
+            {method}
+                model.pth.tar
+
